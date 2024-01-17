@@ -1,0 +1,47 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo-Localizador</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+    <script>
+        let position;
+        let x;
+        let y;
+        function FindPosition(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(GetPosition);
+                
+            }
+            else {
+                alert("Error al mostrar la posición");
+            }
+        }
+        function GetPosition(position){
+            x = position.coords.latitude;
+            y = position.coords.longitude;
+            Imprimir(x,y);
+        }
+        function Imprimir(x,y){
+            document.getElementById("latitud").value = x;
+            document.getElementById("longitud").value = y;
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <input type="submit" value="Ver coordenadas" onclick="FindPosition();">
+    <p>Latitud: <input type="text" id="latitud" disabled></p>
+    <p>Longitud: <input type="text" id="longitud" disabled></p>
+</body>
+</html>
+
+<!--
+    Navegador       X           Y
+    Chrome          28.45865    -16.2875324
+    Edge            28.455729   -16.283189
+-->

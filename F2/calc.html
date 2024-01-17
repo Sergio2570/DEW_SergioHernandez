@@ -1,0 +1,149 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <title>Calculadora</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        table{
+            width: 400px; height: 500px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        td{
+            width: 50px; height: 50px;
+        }
+        #Resultado{
+            width: 220px; height: 100px;
+            border-bottom: 1px solid black;
+            font-size: 75px;
+        }
+        #hueco{
+            border: none;
+        }
+        .number, .operador{
+            padding: 40px;
+            font-size: 30px;
+        }
+        #trc{
+            background-image: url(../images/rc.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <script>
+        //Variables
+        let tipo = 'a';
+        let teclado = '';
+        let aux = '';
+        let upt = '';
+        let ans;
+        //Añadir signo
+        function ChangeType(value){
+            switch (value)
+            {
+                case '+': tipo = '+'; break;
+                case '-': tipo = '-'; break;
+                case '*': tipo = '*'; break;
+                case '/': tipo = '/'; break;
+                case '^': tipo = '^'; break;
+            }
+            aux = teclado;
+            teclado = '';
+            document.getElementById("Resultado").textContent = '';
+        }
+        //Calcular
+        function Calcular(){
+            let total = "Error";
+            if(!isNaN(teclado) && !isNaN(aux)){
+                switch (tipo){
+                    case '+': total = parseFloat(aux) + parseFloat(teclado); break;
+                    case '-': total = parseFloat(aux) - parseFloat(teclado); break;
+                    case '*': total = parseFloat(aux) * parseFloat(teclado); break;
+                    case '/': 
+                        if ( teclado == 0 || aux == 0 ){ alert("No se puede dividir 0"); }
+                        else { total = parseFloat(aux) / parseFloat(teclado); }; break;
+                    case '^': total = Math.pow(aux, teclado); break;
+                }
+            }
+            Finish(total);
+        }
+        //Poner el resultado
+        function Finish(string){
+            document.getElementById("Resultado").textContent = string;
+            ans = string;
+            teclado = 0;
+            aux = 0;
+            tipo = "a";
+        }
+        //Limpiar pantalla
+        function Clear(){
+            teclado = 0;
+            aux = 0;
+            tipo = "a";
+            document.getElementById("Resultado").textContent = '';
+        }
+        //Insertar valor
+        function Insert(valor){
+            teclado += valor;
+            upt = document.getElementById("Resultado").textContent
+            document.getElementById("Resultado").textContent = (upt + valor);
+        }
+        //Número aleatorio
+        function Aleatorio() {
+            teclado = Math.floor(Math.random() * 100);
+            document.getElementById("Resultado").textContent = teclado;
+        }
+        //Raiz cuadrada
+        function Raiz(){
+            aux = Math.sqrt(teclado);
+            document.getElementById("Resultado").textContent = aux;
+        }
+        //Insertar resultado anterior
+        function Ans(){
+            Insert(ans);
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <div class="calculadora">
+        <table>
+            <tr>
+                <td colspan="6" id="Resultado"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="number" id="t7" onclick="Insert('7');" value="7"></td>
+                <td><input type="button" class="number" id="t8" onclick="Insert('8');" value="8"></td>
+                <td><input type="button" class="number" id="t9" onclick="Insert('9');" value="9"></td>
+                <td><input type="button" class="operador" id="t+" onclick="ChangeType('+');" value="+"></td>
+                <td><input type="button" class="operador" id="t-" onclick="ChangeType('-');" value="-"></td>
+                <td><input type="button" class="operador" id="trc" onclick="Raiz();"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="number" id="t4" onclick="Insert('4');" value="4"></td>
+                <td><input type="button" class="number" id="t5" onclick="Insert('5');" value="5"></td>
+                <td><input type="button" class="number" id="t6" onclick="Insert('6');" value="6"></td>
+                <td><input type="button" class="operador" id="tx" onclick="ChangeType('*');" value="*"></td>
+                <td><input type="button" class="operador" id="tv" onclick="ChangeType('/');" value="/"></td>
+                <td><input type="button" class="operador" id="t^" onclick="ChangeType('^');" value="^"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="number" id="t1" onclick="Insert('1');" value="1"></td>
+                <td><input type="button" class="number" id="t2" onclick="Insert('2');" value="2"></td>
+                <td><input type="button" class="number" id="t3" onclick="Insert('3');" value="3"></td>
+                <td><input type="button" class="number" id="tp" onclick="Insert('.');" value="."></td>
+                <td><input type="button" class="operador" id="tc" onclick="Clear();" value="C"></td>
+                <td><input type="button" class="operador" id="tas" onclick=";" value="ArSe"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" class="operador" id="t0" onclick="Insert('0');" value="0"></td>
+                <td><input type="button" class="number" id="ans" onclick="Ans();" value="Ans"></td>
+                <td colspan="1"><input type="button" class="operador" id="tig" onclick="Calcular();" value="="></td>
+                <td><input type="button" class="number" id="trn" onclick="Aleatorio();" value="Rnd"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

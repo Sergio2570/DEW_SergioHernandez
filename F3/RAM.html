@@ -1,0 +1,45 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAM</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        td {
+            width: 100px; height: 50px;
+            text-align: center;
+        }
+        input{
+            width: 100%; height: 100%;
+        }
+    </style>
+    <script>
+        const ram = navigator.deviceMemory;
+        const cpu = window.navigator.hardwareConcurrency;
+        function Ver(){
+            document.getElementById("RAM_v").textContent = (ram + "Gb de RAM");
+            document.getElementById("CPU_v").textContent = (cpu + " cores");
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <div>
+        <table border>
+            <tr>
+                <td id="RAM_t">RAM</td>
+                <td id="RAM_v"></td>
+            </tr>
+            <tr>
+                <td id="CPU_t">Núcleos</td>
+                <td id="CPU_v"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Ver" onclick="Ver();"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

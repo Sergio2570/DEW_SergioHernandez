@@ -1,0 +1,30 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispositivos de entrada</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+    <script>
+        const nDevs = navigator.mediaDevices.enumerateDevices();
+        const tDevs = navigator.mediaDevices.getUserMedia();
+        if (dev2.navigator.getUserMedia({video: true})){
+            console.log("Si");
+        }
+        else {
+            console.log("No");
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <h1>No funciona</h1>
+    <div>
+        <p>Webcam <input type="checkbox" name="webcam" id="webcam" disabled></p>
+        <p>Audio <input type="checkbox" name="audio" id="audio" disabled></p>
+    </div>
+</body>
+</html>

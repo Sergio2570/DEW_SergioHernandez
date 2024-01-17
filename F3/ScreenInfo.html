@@ -1,0 +1,51 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de pantalla</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+    <script>
+        function Mostrar (){
+            document.getElementById("avawid").textContent = screen.availWidth;
+            document.getElementById("diswid").textContent = screen.width;
+            document.getElementById("avahei").textContent = screen.availHeight;
+            document.getElementById("dishei").textContent = screen.height;
+        }
+        
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <div>
+        <table border>
+            <tr>
+                <td></td>
+                <td>Disponible</td>
+                <td>Actual</td>
+            </tr>
+            <tr>
+                <td>Width</td>
+                <td id="avawid">N</td>
+                <td id="diswid">N</td>
+            </tr>
+            <tr>
+                <td>Heigth</td>
+                <td id="avahei">N</td>
+                <td id="dishei">N</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="Mostrar" onclick="Mostrar();"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<!-- 
+    height es mayor que availHeight
+    mejor usar availHeight por si no se puede usar el 100% de la pantalla
+ -->

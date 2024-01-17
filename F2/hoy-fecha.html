@@ -1,0 +1,40 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha actual</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+    </style>
+    <script>
+        const DiaSemana = ["Mon","Tue","Wed","Thr","Fri","Sat","Sun"];
+        const Meses = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        let fecha = new Date;
+        
+        function Carga(){
+            let FechaString; 
+            Transformar(fecha.toString());
+            document.querySelector("#p_fecha").textContent = fecha;
+        }
+        //split a un array sacar 4 primeras posiciones (0-3)
+        function Transformar(fecha){
+            let FechaString;
+            return FechaString;
+        }
+        //diasemana numero de mes de año
+        // onload="Carga();"
+    </script>
+</head>
+<body onload="Carga();">
+    <h1><a href="../index.html">Volver</a></h1>
+    <div>
+        <div class="main_box">
+            <div class="main_box_text">
+                <br>
+                <h1>HOY ES:</h1>
+                <p id="p_fecha"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

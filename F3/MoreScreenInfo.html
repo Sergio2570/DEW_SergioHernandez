@@ -1,0 +1,71 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más información de pantalla</title>
+    <link id="css" rel="stylesheet" href="../css/msi.css">
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+    <script>
+        function Carga (){
+            if(navigator.userAgentData.brands[1].brands == 'Mozilla'){
+                document.getElementById("css").href = "../css/msimf.css";
+            }
+            Escribir();
+        }
+        function Escribir(){
+            document.getElementById("p-ya").textContent = "Alto disponible: " + screen.availHeight + "px";
+            document.getElementById("p-xa").textContent = "Ancho disponible: " + screen.availWidth + "px";
+            document.getElementById("p-yt").textContent = "Alto total: " + screen.height + "px";
+            document.getElementById("p-xt").textContent = "Ancho total: " + screen.width + "px";
+            document.getElementById("p-pr").textContent = "Profundidad de color: " + screen.colorDepth;
+            document.getElementById("p-re").textContent = "Resolución (b/px): " + screen.pixelDepth;
+            document.getElementById("v-ye").textContent = "Alto exterior: " + window.innerHeight + "px";
+            document.getElementById("v-xe").textContent = "Ancho exterior: " + window.innerWidth + "px";
+            document.getElementById("v-cx").textContent = "Coordenada X respecto a la pantalla: " + window.screenX + "px";
+            document.getElementById("v-cy").textContent = "Coordenada Y respecto a la pantalla: " + window.screenY + "px";
+            document.getElementById("v-vi").textContent = "Ha visitado: " + history.length + " páginas";
+        }
+    </script>
+</head>
+<body onload="Carga();">
+    <h1><a href="../index.html">Volver</a></h1>
+    <div id="main">
+        <div id="up">
+            <div id="dpantalla">
+                <h2>Pantalla</h2>
+                <ul id="p-lis">
+                    <li id="p-ya"></li>
+                    <li id="p-xa"></li>
+                    <li id="p-yt"></li>
+                    <li id="p-xt"></li>
+                    <li id="p-pr"></li>
+                    <li id="p-re"></li>
+                </ul>
+            </div>
+            <div id="dventana">
+                <h2>Ventana</h2>
+                <ul id="v-lis">
+                    <li id="v-ye"></li>
+                    <li id="v-xe"></li>
+                    <li id="v-cx"></li>
+                    <li id="v-cy"></li>
+                    <li id="v-vi"></li>
+                </ul>
+            </div>
+        </div>
+        <div id="despedida">
+            <h2>Despedida</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quam animi voluptate provident 
+                magni vero laborum quae officia blanditiis eligendi soluta distinctio aliquid fuga quibusdam, 
+                ad corrupti? Quam, totam magni.
+            </p>
+        </div>
+    </div>
+    
+</body>
+</html>

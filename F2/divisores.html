@@ -1,0 +1,43 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Divisores</title>
+    <style>
+        #dividendo {
+            width: 55px;
+        }
+    </style>
+    <script>
+        let dividendo;
+        let divisor;
+        
+        function Divisores(){
+            const elemento = document.getElementsByClassName("main_box_data")[0];
+            elemento.innerHTML = "";
+            elemento.innerHTML += `<h1>Divisores</h1>Indique un número <input type="text" id="dividendo"><input type="submit" value="Calcular" onclick="Divisores();">`
+            dividendo = document.getElementById("dividendo").value;
+            if (!isNaN(dividendo)){
+                for(divisor = 0; divisor < dividendo; divisor++){
+                    if (dividendo%divisor === 0){
+                        elemento.innerHTML += `<p>${divisor} es un divisor</p>`;
+                    }
+                }
+            }
+            else {
+                alert("Introduce un número");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <div class="main_box">
+        <div class="main_box_data">
+            <h1>Divisores</h1>
+            Indique un número <input type="text" id="dividendo"><input type="submit" value="Calcular" onclick="Divisores();">
+        </div>
+    </div>
+</body>
+</html>

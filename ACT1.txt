@@ -1,0 +1,217 @@
+1. ¿Puedo colocar este código dentro de 
+	<body>? 
+		<script> alert("Bienvenido");</script>
+	</body>
+Sí
+
+2. ¿Qué hace este código?
+Hace aparecer un aviso con el mensaje
+
+3. ¿Qué ocurrirá si mi navegador tiene deshabilitadas las funciones Javascript? (deshabilite la función en su navegador). ¿El usuario puede percatarse de esta situación?
+No funcionará
+
+4. Sin habilitar Javascript, introduzca el siguiente código html en el <body>. ¿Qué ocurre con la página al recargarla? <noscript>Sin js la pagina no va a ir perros</noscript>
+Al no poder cargar los scripts, salta este aviso como parte del html
+
+5. Habilite en el navegador las funciones Javascript. Y sustituya la línea de código JavaScript por ALERT(“Saludos”); (en mayúsculas) ¿Qué ocurre? ¿Cómo puedo ver los errores de JavaScript? 
+Al JS ser case-sensitive, diferencia de mayúsculas y minúsculas, haciendo que ese código no se puede ejecutar porque ALERT no existe. Puedo ver los errores en la consola (F12/consola)
+
+6. ¿Qué hace el siguiente código? ¿para que se utiliza typeof? 
+Salta un aviso con el tipo de dato que le has dado, pudiendo ser tanto texto, números o una variable
+
+7. indica el valor que generan las siguientes expresiones
+a. 2 > 3 +2 = false
+b. 1 + false +3.5 = 4.5
+c. 4 * true + 2 = 6
+d. 5 / 0 = infinity
+e. 10 > 2 > 0 = true
+f. 15 < 3 * 10 = true
+g. 3 * hola + 2 = error
+h. 5 / “hola” = NaN
+i. pi * 3^2 = 25
+j. √25 = 5
+k. “Tienes” + 23 + “años”  = Tienes23años
+
+8. Mira el siguiente código
+    <script>
+        function saludar(){
+            let nombre = "Pedro";
+            alert("Hola " + nombre)
+        }
+        alert("Usuario " + nombre);
+        saludar();
+    </script>
+a. ¿La variable nombre se define como una variable local o como una variable global?
+Local
+b. El código tiene un error ¿cómo puedo arreglarlo? 
+Sacando la variable de la función.
+    <script>
+        let nombre = "Pedro";
+        function saludar(){
+            alert("Hola " + nombre)
+        }
+        alert("Usuario " + nombre);
+        saludar();
+    </script>
+c. 
+    <script>
+        let nombre = "Juán";
+        function saludar(){
+            let nombre = "Pedro";
+            alert("Hola " + nombre)
+        }
+        alert("Usuario " + nombre);
+        saludar();
+    </script>
+¿Qué mostrará la segunda ventana emergente?
+Hola Pedro
+
+9. ¿Qué generan los siguientes códigos?
+a.
+    var resultado = true;
+    resultado.ToString();
+'true'
+
+b. 
+    var llueve = false;
+    llueve += " o true"?;
+'false o true?'
+
+10. ¿Qué valor producirán las siguientes expresiones? 
+a. parseInt("15"); = 15
+b. parseInt("15.5") = 15
+c. parseInt(15.5) = 15
+d. parseInt("true") = NaN
+e. parseInt(true) = NaN
+f. parseInt("Pedro") = NaN
+g. parseInt(15 + "Pedro") = 15
+h. parseFloat("15.5") = 15.5
+i. parseFloat(15.5) = 15.5
+
+
+--3---
+1. Observa el siguiente ejemplo
+    let o = {
+    '1': 1,
+    'a': 2,
+    'b': 3
+    }
+    for(let i in o) {
+    console.log(i);
+    }
+
+a. ¿Qué valores retorna el bucle?
+Devuelve 1, a y b
+
+2. Observa el siguiente código:
+    let arr=[1,2,3,4];
+    for(let i=0; i < arr.length; i++) 
+    { 
+        console.log(arr[i]);
+    }
+    for(let i=0, len=arr.length; i < len; ++i) 
+    {
+        console.log(arr[i]);
+    }
+
+a. ¿Muestran la misma información el primer y el segundo bucle?
+Sí
+
+b. ¿Cuál es la diferencia entre los mismos?
+El primero usa directamente el arr.lenght para operar mientras que el segundo lo pasa a la variable len para usarlo
+
+c. ¿Existe diferencia entre ++i e i++?
+++i = primero suma y después opera
+i++ = primero opera y después suma
+
+3. Y qué ocurre en el siguiente código
+    let i = 0; 
+//i = 0;
+    let k = i++;
+//k = i + 1 = 0 + 1 = 1
+    let i = 0;
+//i = 0
+    let p = ++i;
+//p = 1 + i = 1 + 0 = 1
+    console.log("El valor de k es " + k + " el valor de p es "+ p);
+//k = 1 y p = 1
+
+4. ¿Qué muestra el siguiente código?
+    arr.forEach(function(i){console.log(i)});
+Lo mismo, recorre el array
+
+5. Y el siguiente
+    for (i of arr) {
+    console.log(i);
+    } 
+Lo mismo que antes, todos recorren el array de la misma forma pero con diferente escritura
+
+--4---
+1. Obtenga el código html relacionado con los siguientes árboles de nodos. En el segundo ejemplo
+puede ver los atributos asociados
+a.
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Página sencilla</title>
+    </head>
+    <body>
+        <p>Esta es una página <strong>muy sencilla</strong></p>
+    </body>
+    </html>
+b.
+    <div id="a" class="divs">
+        <h1>Portal web <span class="url">aprenderaprogramar.com</span>, para aprender</h1>
+        <h2>Didáctica de divulgación de la programación</h2>
+    </div>
+
+2. ¿Qué valor se obtendrá al ejecutar estas expresiones?
+a. 16 << 2
+64
+b. 8 > 10 ? v1 = “si” : v1 = “no”
+no
+c. var n=7; alert(“n vale “ + (++n));
+n vale 8
+d. var m=17; alert("m vale " + (m++)); alert(m);
+m vale 17; 18
+e. 3 ^ 2
+1
+f. var y=17; y%=5;
+2
+g. var caja = ["percha", "balon"]; alert(caja[1]);
+balon
+h. var a=3,b=6; var h = a > b ? a : b;
+a = 3, b = 6, h = 6
+
+3. Cree el siguiente formulario en HTML.
+    <div class="formulario_multiplicar">
+        <div id="form_box">
+            <p>
+                <input type="text" value="0" id="primero"> <strong>*</strong>
+                <input type="text" value="0" id="segundo"> 
+                <input type="submit" value="=" id="igual">
+                <input type="text" value="0" id="result">
+            </p>
+        </div>
+    </div>
+
+    <style>
+        .formulario_multiplicar{
+            background-color: blue;
+            width: 720px; height: 80px;
+            border-top-right-radius: 25px; border-top-left-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px;
+            box-shadow: 32px 26px 30px 0px rgba(255, 70, 255,1);
+        }
+        #form_box{
+            padding-top: 14px;
+            padding-left: 90px;
+        }
+    </style>
+
+
+
+
+
+texto de prueba
+
+

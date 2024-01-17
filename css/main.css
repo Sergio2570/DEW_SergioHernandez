@@ -1,0 +1,14 @@
+body{
+    background-color: gray;
+}
+.main_box{
+    margin-top: 50px;
+    text-align: center;
+    background-color: blue;
+    width: 600px; height: 220px;
+    border-top-right-radius: 25px; border-top-left-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px;
+    box-shadow: 32px 26px 30px 0px rgba(0, 0, 0,0.5);
+}
+.main_box_text{
+    text-align: center;
+}

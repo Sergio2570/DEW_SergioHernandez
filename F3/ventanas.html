@@ -1,0 +1,86 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición de ventanas</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        div{    
+            text-align: center;
+        }
+        input{
+            width: 40px;
+        }
+    </style>
+    <script>
+        const medida = "height=400px,width=400px";
+        let pagina;
+        let wwidth;
+        let wheight;
+        let X;
+        let Y;
+        function NuevaVentana(){
+            pagina = window.open("about:blank", "Google", medida);
+        }
+        function CerrarVentana(){
+            pagina.close();
+        }
+        function Ampliar(){
+            wwidth = pagina.window.innerWidth + 30;
+            wheight = pagina.window.innerHeight + 100;
+            pagina.window.resizeTo(wwidth,wheight);
+        }
+        function Reducir(){
+            wwidht = pagina.window.innerWidth - 30;
+            wheight = pagina.window.innerHeight - 30;
+            pagina.window.resizeTo(wwidht,wheight);
+        }
+        function ChangePos(){
+            X = document.getElementById("X-Pos").value;
+            Y = document.getElementById("Y-Pos").value;
+            pagina.window.moveTo(X,Y);
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="../index.html">Volver</a></h1>
+    <div>
+        <h1>Ventana principal</h1>
+        <section>
+            <button id="NewWindow" onclick="NuevaVentana();">Nueva Ventana</button>
+            <button id="CloseWindow" onclick="CerrarVentana();">Cerrar Ventana</button>
+        </section>
+        <section>
+            <button id="MoreZoom" onclick="Ampliar();">Ampliar</button>
+            <button id="LessZoom" onclick="Reducir();">Reducir</button>
+        </section>
+        <section>
+            Indique posición X <input type="text" id="X-Pos"> Indique posición Y <input type="text" id="Y-Pos"><button id="Move" onclick="ChangePos();">Mover</button>
+        </section>
+    </div>
+    <h2>Funciona chueco pero porque JS da para lo que da</h2>
+</body>
+<!--
+Cree una página web donde aparezcan los siguientes botones:
+    Abrir Ventana: abrirá una ventana de tamaño 400px*400px con la dirección
+    www.google.es. La nueva ventana deberá aparecer centrada en la pantalla.
+
+    Cerrar Ventana: deberá cerrar la ventana que se acaba de crear. Si la ventana aún no se ha
+    creado o bien el usuario la cerró, deberá mostrar un error que diga “No hay ventana que cerrar”.
+
+    Ampliar: modificará el tamaño de la ventana aumentando tanto el ancho como en 30px. Se
+    mostrará un mensaje de error cuando no se pueda ampliar el alto o el ancho. NOTA: para que
+    funcione este y los siguientes apartados tiene que abrir una ventana en blanco, para ello quite la
+    dirección www.google.es
+
+    Reducir: modificará el tamaño de la ventana disminuyendo tanto el ancho como en 30px.
+    Se mostrará un mensaje de error cuando no se pueda reducir el alto o el ancho.
+
+    Mover: Ubicará la pantalla en la posición indicada en los cuadros de texto. Los valores
+    tendrán que ser enteros positivos. Antes de mover la nueva pantalla tendrá que comprobar que la
+    nueva posición de la ventana es posible teniendo en cuenta tanto la posición como su alto y ancho
+    y el tamaño de la pantalla.
+-->
+</html>

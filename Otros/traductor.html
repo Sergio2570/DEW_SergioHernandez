@@ -1,0 +1,83 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor Encantamiento Minecraft</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        @font-face {
+            font-family: Minecraft;
+            src: url(./fonts/Minecraft.ttf);
+        }
+        @font-face {
+            font-family: Enchant;
+            src: url(./fonts/minecraft-enchantment.ttf);
+        }
+        .text-enchant, .enchant-text{
+            text-align: center;
+        }
+        #te-text,#te-minecraft,#te-enchant,#et-text,#et-minecraft,#et-enchant{
+            width: 400px;height: 200px;
+            background-color: white;
+            border: 1px solid black;
+        }
+        /* #te-text, #et-text{
+
+        } */
+        #te-minecraft, #et-minecraft{
+            font-family: Minecraft;
+        }
+        #te-enchant ,#et-enchant{
+            font-family: Enchant;
+        }
+        #submit {
+            width: 600px;
+            height: 30px;
+        }
+    </style>
+    <script>
+        let teclado;
+        function TextToEnchant(){
+            teclado = document.getElementById("te-text").value;
+            document.getElementById("te-minecraft").value = teclado;
+            document.getElementById("te-enchant").value = teclado;
+        }
+        function EnchantToText(){
+            teclado = document.getElementById("et-enchant").value;
+            document.getElementById("et-minecraft").value = teclado;
+            document.getElementById("et-text").value = teclado;
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="./index.html">Volver</a></h1>
+    <div class="text-enchant">
+        <table>
+            <h1>Texto a encantamiento</h1>
+            <tr>
+                <td><input type="text" id="te-text"></td>
+                <td><input type="text" id="te-minecraft" disabled></td>
+                <td><input type="text" id="te-enchant" disabled></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" id="submit" value="Traducir" onclick="TextToEnchant();"/></td>
+            </tr>
+        </table>
+    </div>
+    <div class="enchant-text">
+        <table>
+            <h1>Encantamiento a texto</h1>
+            <tr>
+                <td><input type="text" id="et-enchant"></td>
+                <td><input type="text" id="et-minecraft" disabled></td>
+                <td><input type="text" id="et-text" disabled></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" id="submit" value="Traducir" onclick="EnchantToText();"/></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

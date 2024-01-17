@@ -1,0 +1,17 @@
+Usuario de página cumplimenta cualquiera de campos con formato inadecuado: 
+    - texto cambia a rojo 
+    - mostrará un diálogo (<div class="dialog">) con aviso:
+        - El usuario no podrá reanudar la cumplimentación del formulario hasta que cierre esta ventana de diálogo.
+
+botón 'send', al clickar:
+    - Permitirá envío de datos al servidor
+    - Solo con cuestionario correcto 
+    - Mostrar diálogo confirmando envío de datos
+    - En caso contrario:
+        - Mostrar diálogo informando de situación.
+
+Tanto el first name como family name contienen minimo 2 caracteres
+E-mail formato estándar usuario@dominio.extension. 
+    - Todo minúsculas
+    - No puede contener puntos ni carácteres especiales (comienzo y final)
+    - no puede contener 2 caracteres especiales seguidos
