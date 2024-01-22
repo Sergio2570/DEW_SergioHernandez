@@ -1,6 +1,5 @@
 function Load(){document.querySelector('#title').textContent = 'Este es el título'}
 document.addEventListener('keydown',function(event){
-    console.log(event.key);
     let tecla;
     let letra = event.key;
     if (letra == '<'){
