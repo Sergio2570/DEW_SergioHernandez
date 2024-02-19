@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="../css/new_user_dialog.css">
 </head>
 <body>
-
     <div class="dialog"><span>Your message her</span>
         <ul>
             <li><input type="checkbox" onclick="input_checked()"></li>
@@ -13,27 +12,24 @@
         </ul>
         <button onclick="close_me(event)">X</button><button onclick="close_me(event)">OK</button>
     </div>
-
-
     <div id="new_user">
         <button onclick="close_me(event)">X</button>
         <ul>
             <li><span>(*) Mandatory field:</span><br></li>
-            <li>
-                <span id="name">First name*</span><br><input type="text" onchange="onchange_input_alt(event)"></input>
-            </li>
-            <li><span id="surname">Last name*</span><br><input type="text" onchange="onchange_input_alt(event)"></input>
-            </li>
+            <li><span id="name">First name*</span><br><input type="text" 
+                onchange="onchange_input_alt(event)"></input></li>
+            <li><span id="surname">Last name*</span><br><input type="text" 
+                onchange="onchange_input_alt(event)"></input></li>
             <li><span id="e_mail">e-mail address*</span><br><input type="text"
-                    onchange="onchange_input_alt(event)"></input></li>
+                onchange="onchange_input_alt(event)"></input></li>
             <li><span id="e_mail_conf">Repeat your e-email*</span><br><input type="text"
-                    onchange="onchange_input_alt(event)"></input></li>
+                onchange="onchange_input_alt(event)"></input></li>
             <li><span id="user_name">User* (3 characters at least)</span><br><input type="text"
-                    onchange="onchange_input_alt(event)"></input></li>
+                onchange="onchange_input_alt(event)"></input></li>
             <li><span id="birth_date">Birth date* (dd/mm/yy)</span><br><input type="text"
-                    onchange="onchange_input_alt(event)"></input></li>
+                onchange="onchange_input_alt(event)"></input></li>
             <li><span id="tfn_number">Telephone number* (+prefix)xxxxxxxxx</span><br><input type="text"
-                    onchange="onchange_input_alt(event)"></input></li>
+                onchange="onchange_input_alt(event)"></input></li>
             <li><br><span id="e_mail_sending_info">Enviando e-mail...</span></li>
         </ul>
         <button id="send_new_user">Send</button>
@@ -52,63 +48,121 @@
             if (e.target.parentNode.getElementsByTagName('span')[0].innerHTML == 'Birth date* (dd/mm/yy)') validate_birth_date(e.target.value);
             if (e.target.parentNode.getElementsByTagName('span')[0].innerHTML == 'Telephone number* (+prefix)xxxxxxxxx') validate_tfn_number(e.target.value);
         }
+        document.querySelector('#send_new_user').addEventListener('click',Revisar);
         function validate_first_name(texto){
-            let i = texto.lengh;
-            if (isNaN(texto)){
-                if (i > 1){
-                    console.log('check');
-                }
-                else {
-                    Invalid_Format('Demasiado corto: ',texto);
-                }
+            const regex = /^[a-zA-Z]{2,}$/; 
+            let campo = document.querySelector('#name').nextSibling.nextSibling;
+            if (regex.test(texto)){
+                Valid_Format(campo);
             }
-            else {
-                Invalid_Format('El nombre no pueden ser números: ',texto);
+            else{
+                Invalid_Format(campo,'Formato de nombre inválido');
             }
-            
         }
         function validate_last_name(texto){
-            let i = texto.lengh;
-            if (isNaN(texto)){
-                if (i > 1){
-                }
-                else {
-                    Invalid_Format('Demasiado corto: ',texto);
-                }
+            const regex = /^[a-zA-Z]{2,}$/; 
+            let campo = document.querySelector('#surname').nextSibling.nextSibling;
+            if (regex.test(texto)){
+                Valid_Format(campo);
             }
-            else {
-                Invalid_Format('El los apellidos no pueden ser números: ',texto);
+            else{
+                Invalid_Format(campo,'Formato de apellido inválido');
             }
         }
         function validate_email(texto){
-            
+            const regex = /^[a-z0-9]+(?:\.[a-z0-9]+)?@[a-z0-9]+\.[a-z]+$/;
+            let campo = document.querySelector('#e_mail').nextSibling.nextSibling;
+            if (regex.test(texto)){
+                Valid_Format(campo);
+            }
+            else{
+                Invalid_Format(campo,'Formato de correo no válido');
+            }
         }
         function validate_repeat_email(texto){
-            
+            let campo = document.querySelector('#e_mail_conf').nextSibling.nextSibling;
+            if (texto == document.querySelector('#e_mail').nextSibling.nextSibling.value){
+                Valid_Format(campo);
+            }
+            else{
+                Invalid_Format(campo,'Los correos no coinciden');
+            }
         }
         function validate_user(texto){
-            let i = texto.lengh;
-            if (isNaN(texto)){
-                if (i > 1){
-                }
-                else {
-                    Invalid_Format('Demasiado corto: ',texto);
-                }
+            const regex = /^[a-zA-Z]{2,}$/; 
+            let campo = document.querySelector('#user_name').nextSibling.nextSibling;
+            if (regex.test(texto)){
+                Valid_Format(campo);
             }
-            else {
-                Invalid_Format('El nombre de usuario no pueden ser números: ',texto);
+            else{
+                Invalid_Format(campo,'Nombre de usuario inválido');
             }
         }
         function validate_birth_date(texto){
-            
+            const regex = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{2}$/;
+            let campo = document.querySelector('#birth_date').nextSibling.nextSibling;
+            if (regex.test(texto)){
+                Valid_Format(campo);
+            }
+            else{
+                Invalid_Format(campo,'Fecha inválida');
+            }
         }
         function validate_tfn_number(texto){
-            
+            const regex = /^\(\+\d{1,3}\)\d{9}$/; 
+            let campo = document.querySelector('#tfn_number').nextSibling.nextSibling;
+            if (regex.test(texto)){
+                Valid_Format(campo);
+            }
+            else{
+                Invalid_Format(campo,'Número de teléfono inválido');
+            }
         }
-        function Invalid_Format(error,texto){
-            alert(error+texto);
+        function Invalid_Format(campo,error){
+            campo.style.border = 'solid 1px red';
+            campo.style.color = 'red';
+            let aviso = document.querySelector('.dialog');
+            aviso.firstChild.textContent = error;
+            aviso.style.display = 'block';
+        }
+        function Valid_Format(campo){
+            campo.style.border = 'solid 1px green';
+            campo.style.color = 'black';
+        }
+        function Revisar(){
+            let errores = 'Formato inválido: ';
+            if(document.querySelector('#name').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Nombre ';
+            }
+            if(document.querySelector('#surname').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Apellidos ';
+            }
+            if(document.querySelector('#e_mail').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Email ';
+            }
+            if(document.querySelector('#e_mail_conf').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Email no coincide ';
+            }
+            if(document.querySelector('#user_name').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Username ';
+            }
+            if(document.querySelector('#birth_date').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Fecha ';
+            }
+            if(document.querySelector('#tfn_number').nextSibling.nextSibling.style.border != '1px solid green'){
+                errores += 'Teléfono';
+            }
+            if (errores == 'Formato inválido: '){
+                let aviso = document.querySelector('.dialog');
+                aviso.firstChild.textContent = 'Formulario enviado con éxito';
+                aviso.style.display = 'block';
+            }
+            else{
+                let aviso = document.querySelector('.dialog');
+                aviso.firstChild.textContent = errores;
+                aviso.style.display = 'block';
+            }
         }
     </script>
 </body>
-
 </html>
